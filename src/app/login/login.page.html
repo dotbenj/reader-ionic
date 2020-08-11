@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input *ngIf="isSignIn" placeholder="Username" type="text" [(ngModel)]="username"></ion-input>
+        <ion-input type="email"  placeholder="Email" [(ngModel)]="email"></ion-input>
+        <ion-input type="password"  placeholder="Password" [(ngModel)]="password"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" *ngIf="!isSignIn" color="primary" (click)="login()">Connect</ion-button>
+  <ion-button expand="full" *ngIf="!isSignIn" color="primary" (click)="isSignIn = true">Sign In</ion-button>
+  <ion-button expand="full" *ngIf="isSignIn" color="primary" (click)="createUser()">Create</ion-button>
+</ion-footer>

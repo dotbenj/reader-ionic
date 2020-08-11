@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as axios from 'axios';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-chapters',
@@ -15,6 +15,7 @@ export class ChaptersPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private httpClient: HttpClient,
     ) { }
 
   ngOnInit() {}
@@ -22,8 +23,10 @@ export class ChaptersPage implements OnInit {
   ionViewDidEnter() {
     this.route.params.subscribe(async (data) => {
       this.title = data.manga;
-      const chaptersFetch = await axios.default.get(`https://dotben-mangareader-api.herokuapp.com/manga/${this.title}`);
-      this.chapters = chaptersFetch.data.reverse();
+      this.httpClient.get(`https://dotben-mangareader-api.herokuapp.com/manga/${this.title}`)
+        .subscribe((chapters: any) => {
+          this.chapters = chapters;
+        });
     });
   }
 

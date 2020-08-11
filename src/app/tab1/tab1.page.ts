@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import * as axios from 'axios';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tab1',
@@ -12,17 +12,17 @@ export class Tab1Page {
   public query: string;
   public results: any;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private httpClient: HttpClient,
+  ) {}
 
   async search() {
     console.log('Query is:', this.query);
-    try {
-      const result = await axios.default.get(`https://dotben-mangareader-api.herokuapp.com/manga/search/${this.query}`);
-      this.results = result.data;
-      console.log('result', this.results);
-    } catch (error) {
-      console.log('ERROR', error);
-    }
+    this.httpClient.get(`https://dotben-mangareader-api.herokuapp.com/manga/search/${this.query}`)
+      .subscribe(data => {
+        this.results = data;
+      });
   }
 
   navigate(url: string) {

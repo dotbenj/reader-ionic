@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as axios from 'axios';
-
-import { ModalController } from '@ionic/angular';
-import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-viewer',
@@ -20,7 +17,7 @@ export class ViewerPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private modalCtrl: ModalController,
+    private httpClient: HttpClient,
   ) { }
 
   ngOnInit() {
@@ -30,8 +27,10 @@ export class ViewerPage implements OnInit {
     this.route.params.subscribe(async (params) => {
       this.manga = params.manga;
       this.chapter = params.chapter;
-      const chapter = await axios.default.get(`https://dotben-mangareader-api.herokuapp.com/manga/${params.manga}/${params.chapter}`);
-      this.pages = chapter.data.pages;
+      this.httpClient.get(`https://dotben-mangareader-api.herokuapp.com/manga/${params.manga}/${params.chapter}`)
+        .subscribe((chapter: any) => {
+          this.pages = chapter.chapter.pages;
+        });
     });
   }
 

@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { ViewerPageRoutingModule } from './viewer-routing.module';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 
 import { ViewerPage } from './viewer.page';
-
-import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
+import { ViewerPageRoutingModule } from './viewer-routing.module';
 
 @NgModule({
   imports: [
@@ -17,6 +15,7 @@ import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
     IonicModule,
     ViewerPageRoutingModule,
     NgxIonicImageViewerModule,
+    HttpClientModule,
   ],
   declarations: [ViewerPage]
 })

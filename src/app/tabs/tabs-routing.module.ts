@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -8,12 +9,17 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        path: 'login',
+        loadChildren: () => import('../login/login.module').then(m => m.LoginPageModule),
+      },
+      {
         path: 'tab1',
         loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule),
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule),
+        canActivate: [AuthGuard],
       },
       {
         path: 'tab3',

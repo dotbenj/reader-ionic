@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ChaptersPageRoutingModule } from './chapters-routing.module';
+import { LoginPageRoutingModule } from './login-routing.module';
 
-import { ChaptersPage } from './chapters.page';
-import { HttpClientModule } from '@angular/common/http';
-
+import { LoginPage } from './login.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ChaptersPageRoutingModule,
+    LoginPageRoutingModule,
     HttpClientModule,
   ],
-  declarations: [ChaptersPage]
+  declarations: [LoginPage]
 })
-export class ChaptersPageModule {}
+export class LoginPageModule {}
