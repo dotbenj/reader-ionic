@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>chapters</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let chapter of chapters" (click)="navigateToViewer(chapter.number)">
+      <div class=item-content>
+        <span *ngIf="chapter.number">Chapter {{chapter.number}}</span>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

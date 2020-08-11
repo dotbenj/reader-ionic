@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{manga}} : Chapter {{chapter}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <angular-image-viewer *ngIf="pages" [src]="pages" [config]="viewerConf"></angular-image-viewer> -->
+  <ion-list *ngIf="pages" >
+    <ion-img *ngFor="let page of pages" ionImgViewer scheme='light' [src]="page"></ion-img>
+  </ion-list>
+</ion-content>

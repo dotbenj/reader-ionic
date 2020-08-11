@@ -1,17 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-searchbar mode="ios" placeholder="Search manga" [(ngModel)]="query" debounce="500" (ionChange)="search()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div *ngIf="!results" size="large">No manga found</div>
+  <ion-list *ngIf="results">
+    <ion-item *ngFor="let manga of results" (click)='navigate(manga.url)'>
+      <div class=item-content>
+        <span *ngIf="manga.title">{{manga.title}}</span>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>

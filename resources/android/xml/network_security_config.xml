@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+      <trust-anchor>
+          <certificates src="system" />
+      </trust-anchor>
+    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">http://i1.mangapanda.com</domain>
+        <domain includeSubdomains="true">http://i2.mangapanda.com</domain>
+        <domain includeSubdomains="true">http://i3.mangapanda.com</domain>
+        <domain includeSubdomains="true">http://i4.mangapanda.com</domain>
+        <domain includeSubdomains="true">http://i5.mangapanda.com</domain>
+        <domain includeSubdomains="true">http://i6.mangapanda.com</domain>
+        <domain includeSubdomains="true">http://i7.mangapanda.com</domain>
+        <domain includeSubdomains="true">http://i8.mangapanda.com</domain>
+        <domain includeSubdomains="true">http://i9.mangapanda.com</domain>
+    </domain-config>
+</network-security-config>
