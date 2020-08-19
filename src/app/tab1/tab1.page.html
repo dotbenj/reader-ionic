@@ -1,15 +1,30 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-searchbar mode="ios" placeholder="Search manga" [(ngModel)]="query" debounce="500" (ionChange)="search()"></ion-searchbar>
+    <ion-searchbar
+      mode="ios"
+      placeholder="Search manga"
+      [(ngModel)]="query" debounce="500"
+      (ionChange)="search()">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="!results" size="large">No manga found</div>
-  <ion-list *ngIf="results">
-    <ion-item *ngFor="let manga of results" (click)='navigate(manga.url)'>
-      <div class=item-content>
-        <span *ngIf="manga.title">{{manga.title}}</span>
+  <div *ngIf="!results && !query" size="large" class='container'>
+    Use the searchbar to search a manga
+  </div>
+  <div *ngIf="!results && query" size="large" class='container'>
+      <ion-spinner name="circles" color="primary"></ion-spinner>
+      <div>Searching for "{{query}}" ...</div>
+  </div>
+  <div class="container" *ngIf="results && results.length === 0">
+    No result for query: "{{query}}"
+  </div>
+  <ion-list *ngIf="results && results.length > 0">
+    <ion-item *ngFor="let manga of results">
+      <div class="item-content">
+        <span *ngIf="manga.title" class="title"  (click)='navigate(manga.url)'>{{manga.title}}</span>
+        <ion-icon name="star-outline" [class.favorite]='manga.isFav' (click)='doFavorite(manga)'></ion-icon>
       </div>
     </ion-item>
   </ion-list>

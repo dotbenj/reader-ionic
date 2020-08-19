@@ -1,10 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      <span *ngIf="favorites">{{ favorites.length }}</span> Favorites
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div *ngIf="favorites.length === 0" class="container">No favorites added yet, search for a manga and click the blue star to add to your favorites</div>
+  <ion-list *ngIf="favorites.length > 0">
+    <ion-item *ngFor="let manga of favorites"  (click)='navigate(manga.url)'>
+      <div class="item-content">
+        <span *ngIf="manga.name" class="title">{{ manga.name }}</span>
+        <span class="new">{{ manga.remain }} NEW</span>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>

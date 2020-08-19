@@ -1,0 +1,40 @@
+:host {
+  ion-searchbar {
+    margin-top: 10px;
+  }
+
+  .container {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  ion-item {
+    .item-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0px 10px;
+      width: 100%;
+      font-size: 25px;
+      .title {
+        overflow: hidden;
+        font-weight: bold;
+        max-width: 80vw;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 70%;
+      }
+      .new {
+        font-weight: bold;
+        color: var(--ion-color-primary);
+      }
+    }
+    --padding-start: 0px;
+  }
+}

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { isGeneratedFile } from '@angular/compiler/src/aot/util';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,14 @@ export class LoginPage implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private router: Router,
+    private apiService: ApiService,
   ) { }
 
   ngOnInit() {
   }
 
   login() {
-    this.httpClient.post(`https://dotben-mangareader-api.herokuapp.com/login`, { email: this.email, password: this.password})
+    this.httpClient.post(`${this.apiService.getApiUrl()}login`, { email: this.email, password: this.password})
       .subscribe((data: any) => {
         if (data.token) {
           localStorage.setItem('token', data.token);
@@ -35,7 +37,7 @@ export class LoginPage implements OnInit {
 
   createUser() {
     this.httpClient.post(
-      `https://dotben-mangareader-api.herokuapp.com/users`,
+      `${this.apiService.getApiUrl()}users`,
       {
         username: this.username,
         email: this.email,

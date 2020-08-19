@@ -29,7 +29,7 @@ export class ViewerPage implements OnInit {
       this.chapter = params.chapter;
       this.httpClient.get(`https://dotben-mangareader-api.herokuapp.com/manga/${params.manga}/${params.chapter}`)
         .subscribe((chapter: any) => {
-          this.pages = chapter.chapter.pages;
+          this.pages = chapter.pages;
         });
     });
   }

@@ -1,7 +1,7 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { Observable, throwError } from 'rxjs';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -9,10 +9,8 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable <HttpEvent<any>> {
     if (this.authService.getJwtToken()) {
-      console.log('we have token');
       request = this.addToken(request, this.authService.getJwtToken());
     }
-
     return next.handle(request);
   }
 
