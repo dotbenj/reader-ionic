@@ -42,7 +42,7 @@ export class ChaptersPage implements OnInit {
               this.chapters = chapters.map((chap) => {
                 return {
                   ...chap,
-                  read: chap.number < this.currentFav.cursor,
+                  read: chap.number <= this.currentFav.cursor,
                 };
               });
             }

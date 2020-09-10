@@ -29,6 +29,7 @@
     "angular-x-image-viewer": "^2.0.1",
     "axios": "^0.19.2",
     "cordova-android": "8.1.0",
+    "cordova-ios": "5.1.1",
     "ngx-ionic-image-viewer": "^0.7.1",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
@@ -76,7 +77,8 @@
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
